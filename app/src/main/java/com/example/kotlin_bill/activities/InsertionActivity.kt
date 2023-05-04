@@ -13,8 +13,8 @@ import com.google.firebase.database.FirebaseDatabase
 class InsertionActivity : AppCompatActivity() {
     //initializing variables
 
-    private lateinit var etEmpName: EditText
-    private lateinit var etEmpAge: EditText
+    private lateinit var etBillType: EditText
+    private lateinit var etBillAmount: EditText
     private lateinit var etEmpSalary: EditText
     private lateinit var btnSaveData: Button
 
@@ -25,8 +25,8 @@ class InsertionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insertion)
 
-        etEmpName = findViewById(R.id.etEmpName)
-        etEmpAge = findViewById(R.id.etEmpAge)
+        etBillType = findViewById(R.id.etBillType)
+        etBillAmount = findViewById(R.id.etBillAmount)
         etEmpSalary = findViewById(R.id.etEmpSalary)
         btnSaveData = findViewById(R.id.btnSave)
 
@@ -41,33 +41,33 @@ class InsertionActivity : AppCompatActivity() {
     private fun saveEmployeeData() {
 
         //Geting Values
-        val empName = etEmpName.text.toString()
-        val empAge = etEmpAge.text.toString()
+        val billType = etBillType.text.toString()
+        val billAmount = etBillAmount.text.toString()
         val empSalary = etEmpSalary.text.toString()
 
         //validation
-        if (empName.isEmpty()) {
-            etEmpName.error = "Please enter name"
+        if (billType.isEmpty()) {
+            etBillType.error = "Please enter name"
         }
-        if (empAge.isEmpty()) {
-            etEmpAge.error = "Please enter age"
+        if (billAmount.isEmpty()) {
+            etBillAmount.error = "Please enter age"
         }
         if (empSalary.isEmpty()) {
             etEmpSalary.error = "Please enter salary"
         }
 
         //genrate unique ID
-        val empId = dbRef.push().key!!
+        val billId = dbRef.push().key!!
 
-        val employee = EmployeeModel(empId, empName, empAge, empSalary)
+        val employee = EmployeeModel(billId, billType, billAmount, empSalary)
 
-        dbRef.child(empId).setValue(employee)
+        dbRef.child(billId).setValue(employee)
             .addOnCompleteListener {
                 Toast.makeText(this,"data insert successfully",Toast.LENGTH_SHORT).show()
 
                 //clear data after insert
-                etEmpName.text.clear()
-                etEmpAge.text.clear()
+                etBillType.text.clear()
+                etBillAmount.text.clear()
                 etEmpSalary.text.clear()
 
             }.addOnFailureListener { err ->

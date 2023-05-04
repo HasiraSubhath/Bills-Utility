@@ -9,46 +9,50 @@
     >
 
     <EditText
-        android:id="@+id/etEmpName"
+        android:id="@+id/etBillAmount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="47dp"
         android:ems="10"
+        android:hint="Enter Bill Amount"
         android:inputType="textPersonName"
-        android:hint="Enter name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/etBillType" />
 
     <EditText
-        android:id="@+id/etEmpAge"
+        android:id="@+id/etBillType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="283dp"
         android:ems="10"
+        android:hint="Enter Bill Type"
         android:inputType="textPersonName"
-        android:hint="Enter age"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmpName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etEmpSalary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="38dp"
         android:ems="10"
+        android:hint="Enter Bill Amount"
         android:inputType="textPersonName"
-        android:hint="Enter salary"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmpAge" />
+        app:layout_constraintTop_toBottomOf="@+id/etBillAmount" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
+
         android:text="Save Data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
