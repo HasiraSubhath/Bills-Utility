@@ -15,7 +15,7 @@ class InsertionActivity : AppCompatActivity() {
 
     private lateinit var etBillType: EditText
     private lateinit var etBillAmount: EditText
-    private lateinit var etEmpSalary: EditText
+    private lateinit var etBillNotes: EditText
     private lateinit var btnSaveData: Button
 
     private lateinit var dbRef: DatabaseReference
@@ -27,7 +27,7 @@ class InsertionActivity : AppCompatActivity() {
 
         etBillType = findViewById(R.id.etBillType)
         etBillAmount = findViewById(R.id.etBillAmount)
-        etEmpSalary = findViewById(R.id.etEmpSalary)
+        etBillNotes = findViewById(R.id.etBillNotes)
         btnSaveData = findViewById(R.id.btnSave)
 
         dbRef = FirebaseDatabase.getInstance().getReference("Employees")
@@ -43,7 +43,7 @@ class InsertionActivity : AppCompatActivity() {
         //Geting Values
         val billType = etBillType.text.toString()
         val billAmount = etBillAmount.text.toString()
-        val empSalary = etEmpSalary.text.toString()
+        val billNotes = etBillNotes.text.toString()
 
         //validation
         if (billType.isEmpty()) {
@@ -52,14 +52,14 @@ class InsertionActivity : AppCompatActivity() {
         if (billAmount.isEmpty()) {
             etBillAmount.error = "Please enter age"
         }
-        if (empSalary.isEmpty()) {
-            etEmpSalary.error = "Please enter salary"
+        if (billNotes.isEmpty()) {
+            etBillNotes.error = "Please enter salary"
         }
 
         //genrate unique ID
         val billId = dbRef.push().key!!
 
-        val employee = EmployeeModel(billId, billType, billAmount, empSalary)
+        val employee = EmployeeModel(billId, billType, billAmount, billNotes)
 
         dbRef.child(billId).setValue(employee)
             .addOnCompleteListener {
@@ -68,7 +68,7 @@ class InsertionActivity : AppCompatActivity() {
                 //clear data after insert
                 etBillType.text.clear()
                 etBillAmount.text.clear()
-                etEmpSalary.text.clear()
+                etBillNotes.text.clear()
 
             }.addOnFailureListener { err ->
                 Toast.makeText(this,"Error ${err.message}",Toast.LENGTH_SHORT).show()

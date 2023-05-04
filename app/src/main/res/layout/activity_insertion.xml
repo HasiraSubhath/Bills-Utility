@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etEmpSalary"
+        android:id="@+id/etBillNotes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
@@ -56,5 +56,5 @@
         android:text="Save Data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmpSalary" />
+        app:layout_constraintTop_toBottomOf="@+id/etBillNotes" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,5 +4,5 @@ data class EmployeeModel(
     var billId: String? = null,
     var billType: String? = null,
     var billAmount: String? = null,
-    var empSalary: String? = null
+    var billNotes: String? = null
 )

@@ -17,7 +17,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
     private lateinit var tvBillId: TextView
     private lateinit var tvBillType: TextView
     private lateinit var tvBillAmount: TextView
-    private lateinit var tvEmpSalary: TextView
+    private lateinit var tvBillNotes: TextView
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
 
@@ -69,7 +69,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
         tvBillId = findViewById(R.id.tvBillId)
         tvBillType = findViewById(R.id.tvBillType)
         tvBillAmount = findViewById(R.id.tvBillAmount)
-        tvEmpSalary = findViewById(R.id.tvEmpSalary)
+        tvBillNotes = findViewById(R.id.tvBillNotes)
 
         btnUpdate = findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
@@ -80,7 +80,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
         tvBillId.text = intent.getStringExtra("billId")
         tvBillType.text = intent.getStringExtra("billType")
         tvBillAmount.text = intent.getStringExtra("billAmount")
-        tvEmpSalary.text = intent.getStringExtra("empSalary")
+        tvBillNotes.text = intent.getStringExtra("billNotes")
 
     }
 
@@ -97,14 +97,14 @@ class EmployeeDetailsActivity : AppCompatActivity() {
 
         val etBillType = mDialogView.findViewById<EditText>(R.id.etBillType)
         val etBillAmount = mDialogView.findViewById<EditText>(R.id.etBillAmount)
-        val etEmpSalary = mDialogView.findViewById<EditText>(R.id.etEmpSalary)
+        val etBillNotes = mDialogView.findViewById<EditText>(R.id.etBillNotes)
 
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
         //update
         etBillType.setText(intent.getStringExtra("billType").toString())
         etBillAmount.setText(intent.getStringExtra("billAmount").toString())
-        etEmpSalary.setText(intent.getStringExtra("empSalary").toString())
+        etBillNotes.setText(intent.getStringExtra("billNotes").toString())
 
         mDialog.setTitle("Updating $billType Record")
 
@@ -116,7 +116,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
                 billId,
                 etBillType.text.toString(),
                 etBillAmount.text.toString(),
-                etEmpSalary.text.toString()
+                etBillNotes.text.toString()
             )
 
             Toast.makeText(applicationContext, "Employee Data Updated", Toast.LENGTH_LONG).show()
@@ -124,7 +124,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
             //we are setting updated data to our textviews
             tvBillType.text = etBillType.text.toString()
             tvBillAmount.text = etBillAmount.text.toString()
-            tvEmpSalary.text = etEmpSalary.text.toString()
+            tvBillNotes.text = etBillNotes.text.toString()
 
             alertDialog.dismiss()
 
