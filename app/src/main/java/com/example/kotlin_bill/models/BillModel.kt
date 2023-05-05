@@ -1,6 +1,6 @@
 package com.example.kotlin_bill.models
 
-data class EmployeeModel(
+data class BillModel(
     var billId: String? = null,
     var billType: String? = null,
     var billAmount: String? = null,

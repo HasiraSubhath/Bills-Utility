@@ -8,15 +8,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_bill.R
-import com.example.kotlin_bill.adapters.EmpAdapter
-import com.example.kotlin_bill.models.EmployeeModel
+import com.example.kotlin_bill.adapters.BillAdapter
+import com.example.kotlin_bill.models.BillModel
 import com.google.firebase.database.*
 
-class FetchingActivity : AppCompatActivity() {
+class BillFetchingActivity : AppCompatActivity() {
 
     private lateinit var empRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var empList: ArrayList<EmployeeModel>
+    private lateinit var billList: ArrayList<BillModel>
     private lateinit var dbRef: DatabaseReference
 
 
@@ -29,7 +29,7 @@ class FetchingActivity : AppCompatActivity() {
         empRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        empList = arrayListOf<EmployeeModel>()
+        billList = arrayListOf<BillModel>()
 
         getEmployeeData()
 
@@ -41,29 +41,29 @@ class FetchingActivity : AppCompatActivity() {
         empRecyclerView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Employees")
+        dbRef = FirebaseDatabase.getInstance().getReference("BillsDB")
 
         dbRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-               empList.clear()
+               billList.clear()
                 if (snapshot.exists()){
                     for (empSnap in snapshot.children){
-                        val empData = empSnap.getValue(EmployeeModel::class.java)
-                        empList.add(empData!!)
+                        val billData = empSnap.getValue(BillModel::class.java)
+                        billList.add(billData!!)
                     }
-                    val mAdapter = EmpAdapter(empList)
+                    val mAdapter = BillAdapter(billList)
                     empRecyclerView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : EmpAdapter.onItemClickListener{
+                    mAdapter.setOnItemClickListener(object : BillAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
-                            val intent = Intent(this@FetchingActivity, EmployeeDetailsActivity::class.java)
+                            val intent = Intent(this@BillFetchingActivity, BillDetailsActivity::class.java)
 
                             //put extra(passing data to another activity)
-                            intent.putExtra("billId", empList[position].billId)
-                            intent.putExtra("billType", empList[position].billType)
-                            intent.putExtra("billAmount", empList[position].billAmount)
-                            intent.putExtra("billNotes", empList[position].billNotes)
+                            intent.putExtra("billId", billList[position].billId)
+                            intent.putExtra("billType", billList[position].billType)
+                            intent.putExtra("billAmount", billList[position].billAmount)
+                            intent.putExtra("billNotes", billList[position].billNotes)
                             startActivity(intent)
                         }
 

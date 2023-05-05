@@ -9,10 +9,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.kotlin_bill.R
-import com.example.kotlin_bill.models.EmployeeModel
+import com.example.kotlin_bill.models.BillModel
 import com.google.firebase.database.FirebaseDatabase
 
-class EmployeeDetailsActivity : AppCompatActivity() {
+class BillDetailsActivity : AppCompatActivity() {
 
     private lateinit var tvBillId: TextView
     private lateinit var tvBillType: TextView
@@ -24,7 +24,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_employee_details)
+        setContentView(R.layout.activity_bill_details)
 
         initView()
         setValuesToViews()
@@ -47,13 +47,13 @@ class EmployeeDetailsActivity : AppCompatActivity() {
     private fun deleteRecord(
         id: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("Employees").child(id)
+        val dbRef = FirebaseDatabase.getInstance().getReference("BillsDB").child(id)
         val mTask = dbRef.removeValue()
 
         mTask.addOnSuccessListener {
-            Toast.makeText(this, "Employee data deleted", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Bill data deleted", Toast.LENGTH_LONG).show()
 
-            val intent = Intent(this, FetchingActivity::class.java)
+            val intent = Intent(this, BillFetchingActivity::class.java)
             finish()
             startActivity(intent)
         }.addOnFailureListener{ error ->
@@ -119,7 +119,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
                 etBillNotes.text.toString()
             )
 
-            Toast.makeText(applicationContext, "Employee Data Updated", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Bill Data Updated", Toast.LENGTH_LONG).show()
 
             //we are setting updated data to our textviews
             tvBillType.text = etBillType.text.toString()
@@ -138,8 +138,8 @@ class EmployeeDetailsActivity : AppCompatActivity() {
         age: String,
         salary: String
     ){
-        val dbRef = FirebaseDatabase.getInstance().getReference("Employees").child(id)
-        val empInfo = EmployeeModel(id, name, age, salary)
-        dbRef.setValue(empInfo)
+        val dbRef = FirebaseDatabase.getInstance().getReference("BillsDB").child(id)
+        val billInfo = BillModel(id, name, age, salary)
+        dbRef.setValue(billInfo)
     }
 }

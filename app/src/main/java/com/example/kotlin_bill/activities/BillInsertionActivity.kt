@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.kotlin_bill.models.EmployeeModel
+import com.example.kotlin_bill.models.BillModel
 import com.example.kotlin_bill.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class InsertionActivity : AppCompatActivity() {
+class BillInsertionActivity : AppCompatActivity() {
     //initializing variables
 
     private lateinit var etBillType: EditText
@@ -30,7 +30,7 @@ class InsertionActivity : AppCompatActivity() {
         etBillNotes = findViewById(R.id.etBillNotes)
         btnSaveData = findViewById(R.id.btnSave)
 
-        dbRef = FirebaseDatabase.getInstance().getReference("Employees")
+        dbRef = FirebaseDatabase.getInstance().getReference("BillsDB")
 
         btnSaveData.setOnClickListener {
             saveEmployeeData()
@@ -59,9 +59,9 @@ class InsertionActivity : AppCompatActivity() {
         //genrate unique ID
         val billId = dbRef.push().key!!
 
-        val employee = EmployeeModel(billId, billType, billAmount, billNotes)
+        val bill = BillModel(billId, billType, billAmount, billNotes)
 
-        dbRef.child(billId).setValue(employee)
+        dbRef.child(billId).setValue(bill)
             .addOnCompleteListener {
                 Toast.makeText(this,"data insert successfully",Toast.LENGTH_SHORT).show()
 

@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_bill.R
-import com.example.kotlin_bill.models.EmployeeModel
+import com.example.kotlin_bill.models.BillModel
 
-class EmpAdapter(private val empList: ArrayList<EmployeeModel>) :
-    RecyclerView.Adapter<EmpAdapter.ViewHolder>() {
+class BillAdapter(private val billList: ArrayList<BillModel>) :
+    RecyclerView.Adapter<BillAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
 
@@ -22,17 +22,17 @@ class EmpAdapter(private val empList: ArrayList<EmployeeModel>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.emp_list_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.bill_list_item, parent, false)
         return ViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentEmp = empList[position]
+        val currentEmp = billList[position]
         holder.tvBillType.text = currentEmp.billType
     }
 
     override fun getItemCount(): Int {
-        return empList.size
+        return billList.size
     }
 
     class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
