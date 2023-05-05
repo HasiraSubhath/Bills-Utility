@@ -7,6 +7,17 @@
     tools:context=".activities.MainActivity" >
 
     <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="525dp"
+        android:layout_height="261dp"
+        android:layout_marginBottom="540dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.315"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/top_signup" />
+
+    <ImageView
         android:id="@+id/imageView3"
         android:layout_width="141dp"
         android:layout_height="137dp"
@@ -25,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bill_topic"
-        android:textColor="@color/blue"
+        android:textColor="@color/black"
         android:layout_marginTop="80dp"
         android:textSize="28sp"
         android:gravity="center"
