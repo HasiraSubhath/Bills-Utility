@@ -46,34 +46,39 @@ class BillInsertionActivity : AppCompatActivity() {
         val billNotes = etBillNotes.text.toString()
 
         //validation
-        if (billType.isEmpty()) {
-            etBillType.error = "Please enter name"
-        }
-        if (billAmount.isEmpty()) {
-            etBillAmount.error = "Please enter age"
-        }
-        if (billNotes.isEmpty()) {
-            etBillNotes.error = "Please enter salary"
-        }
+        if (billType.isEmpty() || billAmount.isEmpty() || billNotes.isEmpty()) {
 
-        //genrate unique ID
-        val billId = dbRef.push().key!!
-
-        val bill = BillModel(billId, billType, billAmount, billNotes)
-
-        dbRef.child(billId).setValue(bill)
-            .addOnCompleteListener {
-                Toast.makeText(this,"data insert successfully",Toast.LENGTH_SHORT).show()
-
-                //clear data after insert
-                etBillType.text.clear()
-                etBillAmount.text.clear()
-                etBillNotes.text.clear()
-
-            }.addOnFailureListener { err ->
-                Toast.makeText(this,"Error ${err.message}",Toast.LENGTH_SHORT).show()
+            if (billType.isEmpty()) {
+                etBillType.error = "Please enter Bill Type"
             }
+            if (billAmount.isEmpty()) {
+                etBillAmount.error = "Please Bill Amount"
+            }
+            if (billNotes.isEmpty()) {
+                etBillNotes.error = "Please Bill Note"
+            }
+            Toast.makeText(this, "Some areas are not filled", Toast.LENGTH_LONG).show()
+        } else {
+
+            //genrate unique ID
+            val billId = dbRef.push().key!!
+
+            val bill = BillModel(billId, billType, billAmount, billNotes)
+
+            dbRef.child(billId).setValue(bill)
+                .addOnCompleteListener {
+                    Toast.makeText(this, "data insert successfully", Toast.LENGTH_SHORT).show()
+
+                    //clear data after insert
+                    etBillType.text.clear()
+                    etBillAmount.text.clear()
+                    etBillNotes.text.clear()
+
+                }.addOnFailureListener { err ->
+                    Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_SHORT).show()
+                }
+
+        }
 
     }
-
 }

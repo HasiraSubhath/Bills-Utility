@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Employee Name"
+        android:hint="Bill Type"
         android:inputType="textPersonName" />
 
     <EditText
@@ -19,7 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Employee Age" />
+        android:hint="Bill Amount"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/etBillNotes"
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Employee Salary"
+        android:hint="Bill Note"
         android:inputType="textPersonName" />
 
     <Button
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:backgroundTint="@color/blue"
         android:text="Update Data" />
 
 

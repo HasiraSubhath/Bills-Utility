@@ -14,5 +14,7 @@
     <color name="Darkgreen">#E41B8E00</color>
     <color name="lighBlue">#3F51B5</color>
     <color name="divider_grey">#9C9C9C</color>
+    <color name="table">#6b5dd2</color>
+
 
 </resources>
