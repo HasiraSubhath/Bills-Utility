@@ -18,6 +18,7 @@ class BillDetailsActivity : AppCompatActivity() {
     private lateinit var tvBillType: TextView
     private lateinit var tvBillAmount: TextView
     private lateinit var tvBillNotes: TextView
+    private lateinit var tvBillDate: TextView
     private lateinit var btnUpdate: Button
     private lateinit var btnDelete: Button
 
@@ -70,6 +71,7 @@ class BillDetailsActivity : AppCompatActivity() {
         tvBillType = findViewById(R.id.tvBillType)
         tvBillAmount = findViewById(R.id.tvBillAmount)
         tvBillNotes = findViewById(R.id.tvBillNotes)
+        tvBillDate = findViewById(R.id.tvBillDate)
 
         btnUpdate = findViewById(R.id.btnUpdate)
         btnDelete = findViewById(R.id.btnDelete)
@@ -81,6 +83,7 @@ class BillDetailsActivity : AppCompatActivity() {
         tvBillType.text = intent.getStringExtra("billType")
         tvBillAmount.text = intent.getStringExtra("billAmount")
         tvBillNotes.text = intent.getStringExtra("billNotes")
+        tvBillDate.text = intent.getStringExtra("billDate")
 
     }
 
@@ -98,6 +101,7 @@ class BillDetailsActivity : AppCompatActivity() {
         val etBillType = mDialogView.findViewById<EditText>(R.id.etBillType)
         val etBillAmount = mDialogView.findViewById<EditText>(R.id.etBillAmount)
         val etBillNotes = mDialogView.findViewById<EditText>(R.id.etBillNotes)
+        val etBillDate = mDialogView.findViewById<EditText>(R.id.etBillDate)
 
         val btnUpdateData = mDialogView.findViewById<Button>(R.id.btnUpdateData)
 
@@ -105,6 +109,7 @@ class BillDetailsActivity : AppCompatActivity() {
         etBillType.setText(intent.getStringExtra("billType").toString())
         etBillAmount.setText(intent.getStringExtra("billAmount").toString())
         etBillNotes.setText(intent.getStringExtra("billNotes").toString())
+        etBillDate.setText(intent.getStringExtra("billDate").toString())
 
         mDialog.setTitle("Updating $billType Record")
 
@@ -112,11 +117,13 @@ class BillDetailsActivity : AppCompatActivity() {
         alertDialog.show()
 
         btnUpdateData.setOnClickListener {
-            updateEmpData(
+            updateBillData(
                 billId,
                 etBillType.text.toString(),
                 etBillAmount.text.toString(),
-                etBillNotes.text.toString()
+                etBillNotes.text.toString(),
+                etBillDate.text.toString()
+
             )
 
             Toast.makeText(applicationContext, "Bill Data Updated", Toast.LENGTH_LONG).show()
@@ -125,6 +132,7 @@ class BillDetailsActivity : AppCompatActivity() {
             tvBillType.text = etBillType.text.toString()
             tvBillAmount.text = etBillAmount.text.toString()
             tvBillNotes.text = etBillNotes.text.toString()
+            tvBillDate.text = etBillDate.text.toString()
 
             alertDialog.dismiss()
 
@@ -132,14 +140,15 @@ class BillDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun updateEmpData(
+    private fun updateBillData(
         id: String,
-        name: String,
-        age: String,
-        salary: String
+        type: String,
+        amount: String,
+        note: String,
+        date: String
     ){
         val dbRef = FirebaseDatabase.getInstance().getReference("BillsDB").child(id)
-        val billInfo = BillModel(id, name, age, salary)
+        val billInfo = BillModel(id, type, amount, note, date)
         dbRef.setValue(billInfo)
     }
 }

@@ -70,15 +70,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etBillAmount" />
 
+    <EditText
+        android:id="@+id/etBillDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:hint="Enter Bill Date"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etBillNotes" />
+
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/blue"
         android:text="Add Bill"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etBillNotes" />
+        app:layout_constraintTop_toBottomOf="@+id/etBillDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

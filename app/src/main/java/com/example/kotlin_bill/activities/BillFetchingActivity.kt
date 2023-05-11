@@ -31,12 +31,12 @@ class BillFetchingActivity : AppCompatActivity() {
 
         billList = arrayListOf<BillModel>()
 
-        getEmployeeData()
+        getBillData()
 
 
     }
 
-    private fun getEmployeeData() {
+    private fun getBillData() {
 
         empRecyclerView.visibility = View.GONE
         tvLoadingData.visibility = View.VISIBLE
@@ -64,6 +64,7 @@ class BillFetchingActivity : AppCompatActivity() {
                             intent.putExtra("billType", billList[position].billType)
                             intent.putExtra("billAmount", billList[position].billAmount)
                             intent.putExtra("billNotes", billList[position].billNotes)
+                            intent.putExtra("billDate", billList[position].billDate)
                             startActivity(intent)
                         }
 

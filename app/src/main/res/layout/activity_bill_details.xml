@@ -76,9 +76,9 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
             android:orientation="horizontal"
-            android:weightSum="2"
+            android:visibility="invisible"
 
-            >
+            android:weightSum="2">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -261,6 +261,60 @@
 
                 <TextView
                     android:id="@+id/tvBillNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:background="@color/table">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:gravity="center"
+                    android:text="Bill Date"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+
+
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.4">
+
+                <TextView
+                    android:id="@+id/tvBillDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
